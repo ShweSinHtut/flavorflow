@@ -1,0 +1,972 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+:root{
+  --bg: linear-gradient(135deg, #8052ec, #d161ff);
+  --t-color: #9658ae;
+  --white: #f3f3f3d3;
+  --btn: 2px 4px 6px rgba(0, 0, 0, .25);
+  --primary-box: 0 0 1rem rgb(0 0 0 / .2);
+  --box: 0 0 1rem rgb(0 0 0 / .7);
+  --text: 0 2px 4px rgba(0, 0, 0, .2);
+  --btn-blue: #5F7FF5;
+  --occupied: #d16868;
+}
+
+body{
+  width: 100%;
+  font-family: "Mulish", sans-serif;
+  background: var(--bg);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  scroll-behavior: smooth;
+}
+.container{
+    width: auto;
+    position: absolute;
+    inset: 35px;
+    padding: 30px;
+    background: var(--white);
+    backdrop-filter: blur(400px);
+    box-shadow: var(--box);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+.top-btn{
+    margin-top: 20px;
+}
+  
+.line{
+  width: 1px;
+  height: 100%;
+  background: var(--bg);
+  opacity: .5;
+}
+  
+.options{
+  width: 20%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.options > div{
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+  
+.options > div > div{
+  display: flex;
+  align-items: center;
+}
+
+.options > div > div:not(.active){
+  padding: 12px 8px;
+  font-size: 15px;
+  color: var(--white);
+  background: var(--bg);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  opacity: .45;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  transition: all 320ms ease-in;
+}
+  
+.options > div > div:not(.active):hover{
+  background: var(--bg);
+  box-shadow: var(--btn);
+  opacity: 1;
+  transform: scale(.97);
+}
+.active{
+  padding: 12px 8px;
+  font-size: 15px;
+  background: var(--bg);
+  border: 1px solid transparent;
+  color: var(--white);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: var(--btn);
+  opacity: 1;
+  cursor: pointer;
+  transition: all 320ms ease-in;
+}
+  
+.options > div > div > i{
+  margin: 0 15px;
+  font-size: 20px;
+}
+
+.of-option{
+  width: 75%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none;
+}
+
+.food, .desserts-nav, .tables-reservation, .feedback, .contact-us, #thai-food, #myanmar-food, #dessert-ic, #dessert-pizza, #dessert-coffee{
+  display: none;
+}
+  
+.desserts, .home, .food, .desserts-nav, .tables-reservation, .feedback, .contact-us{
+  height: 100%;
+  padding: 20px 0;
+}
+.home h1{
+  text-align: center;
+  color: #082C38;
+  font-weight: 700;
+  text-shadow: var(--btn);
+}
+
+.opt-buttons{
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.opt-buttons .buttons, .food-buttons, .desserts-buttons, .tables-buttons{
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--btn);
+  margin-bottom: 3rem;
+}
+
+.food-buttons{
+  width: 400px;
+}
+
+.desserts-buttons{
+  width: 500px;
+}
+  
+.food-thai{
+  border-right: .5px solid #00000048;
+  border-left: .5px solid #00000048;
+}
+.dessert-pizza{
+  border-right: .5px solid #00000048;
+}
+
+:is(.opt-buttons .buttons, .food-buttons, .desserts-buttons, .tables-buttons) > div{
+  width: 140px;
+  padding: 5px 0;
+  font-size: 15px;
+  text-align: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.opt-btn-active{
+  background: var(--bg);
+  color: var(--white);
+}
+  
+.food-drink, .desserts{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  row-gap: 3rem;
+}
+
+.desserts{
+  display: none;
+}
+.products-grid{
+  background: var(--bg);
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+  box-shadow: var(--primary-box);
+  cursor: pointer;
+  transition: all 300ms ease-in;
+  position: relative;
+}
+
+.products-grid:hover{
+  box-shadow: var(--box);
+}
+.products-grid img{
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+}
+  
+.products-grid .overlay{
+  position: absolute;
+  inset: 0 0 32px 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, .4);
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.products-grid .overlay:hover{
+  opacity: 1;
+}
+
+.products-grid .overlay > div a{
+  background: var(--btn-blue);
+  color: var(--white);
+  font-size: 13px;
+  padding: 2px 15px;
+  border-radius: 7px;
+  box-shadow: var(--box);
+  transition: transform 300ms ease-in;
+}
+  
+.products-grid .name{
+  color: var(--white);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.price-seat{
+  background: var(--bg);
+  margin: 2rem 3.5rem 2rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 20px;
+  box-shadow: var(--btn);
+  height: fit-content;
+}
+
+.price-seat > div{
+  color: var(--white);
+  padding: 14px 0;
+  font-size: 14px;
+}
+  
+.t-grid{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+  gap: 2rem;
+  padding: 20px;
+}
+.table{
+  background: var(--bg);
+  border-radius: 15px;
+  line-height: 2.5;
+  padding: 10px 15px;
+  box-shadow: var(--btn);
+}
+  
+.family{
+  display: none;
+}
+
+.t-id{
+  text-align: center;
+  font-size: 13px;
+  color: var(--white);
+}
+
+.t-reserve{
+  font-size: 11px;
+  background: var(--white);
+  padding: 2px 5px;
+  border-radius: 5px;
+  transition: box-shadow 300ms ease-in;
+}
+
+.t-reserve:hover{
+  box-shadow: var(--primary-box);
+}
+
+.table.occupied{
+  background: var(--occupied);
+  opacity: .8;
+  pointer-events: none;
+}
+.feedback{
+  display: grid;
+  place-items: center;
+}
+
+.f-container{
+  width: 700px;
+  height: 90px;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--text);
+}
+
+.input{
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+  
+.input input{
+  width: 500px;
+  padding: 8px;
+  background: var(--white);
+  color: var(--t-color);
+  outline: none;
+  border: none;
+  box-shadow: var(--text);
+}
+
+.input input::placeholder{
+  color: var(--t-color);
+  opacity: .5;
+  font-size: 12px;
+}
+.input button{
+  background: var(--btn-blue);
+  color: var(--white);
+  border: none;
+  padding: 8px 25px;
+  font-size: 13px;
+  box-shadow: var(--text);
+  cursor: pointer;
+  transition: transform 250ms ease-in;
+}
+  
+.input button:hover{
+  transform: scale(.95);
+}
+
+@media(max-width: 1178px) and (min-width: 1024px){
+  .products-grid{
+    max-width: 230px;
+  }
+
+  .products-grid img{
+    width: 220px;
+    height: 150px;
+  }
+
+  .opt-buttons .food-buttons{
+    width: 380px;
+  }
+
+  :is(.opt-buttons .food-buttons, .desserts-buttons) > div{
+    font-size: 13px;
+  }
+
+  .desserts-buttons{
+    width: 450px;
+  }
+  .f-container{
+      width: 600px;
+    }
+  
+    .input{
+      padding: 0 10px;
+      justify-content: space-around;
+    }
+  
+    .input input{
+      width: 400px;
+    }
+  }
+    
+@media(max-width: 1127px) and (min-width: 1024px){
+.container{
+padding: 20px;
+}
+
+.options > div > div:not(.active), .active{
+font-size: 14px;
+padding: 10px 6px;
+}
+
+.options > div > div > i{
+margin: 0 13px;
+font-size: 17px;
+}
+
+:is(.opt-buttons .buttons, .food-buttons, .tables-buttons) > div{
+padding: 4px 0;
+font-size: 14px;
+}
+}
+
+@media(max-width: 1025px) and (min-width: 768px){
+  .container{
+    padding: 18px;
+  }
+
+  .options > div > div:not(.active), .active{
+    font-size: 13px;
+    padding: 8px 4px;
+  }
+
+  .options > div > div > i{
+    margin: 0 12px;
+    font-size: 15px;
+  }
+
+  :is(.opt-buttons .buttons, .food-buttons, .tables-buttons) > div{
+    padding: 4px 0;
+    font-size: 13px;
+  }
+
+  .food-drink, .desserts{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .products-grid{
+    max-width: 250px;
+  }
+
+  .products-grid img{
+    width: 250px;
+    height: 180px;
+  }
+
+  .products-grid .overlay{
+    inset: 0 0 33px 0;
+  }
+
+  .desserts-buttons{
+      width: 430px;
+  }
+
+  .opt-buttons .desserts-buttons > div{
+    font-size: 12px;
+  }
+
+  .price-seat{
+    margin: 1rem 2rem;
+    border-radius: 15px;
+  }
+  .price-seat > div{
+    padding: 10px 0;
+    font-size: 12px;
+  }
+
+  .t-id{
+    font-size: 12px;
+  }
+
+  .t-reserve{
+    font-size: 10px;
+  }
+
+  .f-container{
+    width: 500px;
+    height: 70px;
+  }
+
+  .input{
+    padding: unset;
+  }
+
+  .input input{
+    width: 300px;
+  }
+}
+
+@media(max-width: 830px) and (min-width: 425px){
+  .products-grid{
+    max-width: 230px;
+  }
+
+  .products-grid img{
+    width: 230px;
+    height: 160px;
+  }
+
+  .products-grid .name{
+    font-size: 13px;
+  }
+
+  .products-grid .overlay{
+    inset: 0 0 31px 0;
+  }
+
+  .desserts-buttons{
+    width: 410px;
+  }
+
+  .opt-buttons .desserts-buttons > div{
+    font-size: 11.5px;
+  }
+
+  .price-seat{
+    margin: 1rem;
+    border-radius: 15px;
+  }
+
+  .price-seat > div{
+    padding: 9px 0;
+    font-size: 11px;
+  }
+  .t-id{
+      font-size: 11px;
+  }
+  
+  .t-reserve{
+    font-size: 9px;
+  }
+
+  .t-grid{
+    grid-template-columns: repeat(4, 1fr);
+    padding: 17px;
+  }
+}
+            
+@media(max-width: 772px) and (min-width: 425px){
+  .food-drink, .desserts{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .opt-buttons .food-buttons{
+    width: 360px;
+  }
+
+  .opt-buttons .food-buttons > div{
+    font-size: 12px;
+  }
+
+  .products-grid{
+    max-width: 350px;
+  }
+
+  .products-grid img{
+    width: 350px;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+
+  .products-grid .name{
+    font-size: 13px;
+  }
+
+  .products-grid .name{
+    margin-bottom: 20px;
+    font-size: 17px;
+  }
+
+  .products-grid .overlay{
+    inset: 0 0 56px 0;
+  }
+}
+            
+@media(max-width: 950px) and (min-width: 425px){
+.options > div > div{
+  justify-content: center;
+}
+
+.options > div > div > i{
+  display: none;
+}
+}
+
+@media(max-width: 823px) and (min-width: 425px){
+.options > div > div:not(.active), .active{
+  font-size: 12px;
+}
+
+:is(.opt-buttons) .buttons, .tables-buttons{
+  width: 260px;
+}
+
+.opt-buttons .buttons > div{
+  width: 130px;
+  font-size: 12px;
+}
+}
+
+@media(max-width: 768px) and (min-width: 425px){
+  .container{
+    padding: 15px;
+    inset: 25px;
+  }
+
+  .options > div > div:not(.active), .active{
+    padding: 6px;
+    border-radius: 7px;
+  }
+
+  .opt-buttons .buttons, .tables-buttons{
+    width: 240px;
+  }
+
+  :is(.opt-buttons .buttons, .tables-buttons) > div{
+    width: 120px;
+    padding: 3px 0;
+    font-size: 12px;
+  }
+
+  .f-container{
+    width: 400px;
+    height: 50px;
+  }
+
+  .input{
+    padding: unset;
+  }
+
+  .input input{
+    padding: 5px;
+    width: 250px;
+    font-size: 10px;
+  }
+
+  .input input::placeholder{
+    font-size: 10px;
+  }
+
+  .input button{
+    padding: 5px 15px;
+    font-size: 10px;
+  }
+}
+              
+@media(max-width: 678px) and (min-width: 425px){
+  .options > div > div:not(.active), .active{
+    font-size: 11px;
+  }
+
+  .desserts-buttons{
+    width: 400px;
+  }
+
+  .opt-buttons .desserts-buttons > div{
+    font-size: 11px;
+    padding: 4px 3px;
+  }
+
+  .price-seat{
+    margin: .8rem;
+  }
+
+  .price-seat > div{
+    padding: 7px 0;
+    font-size: 10px;
+  }
+
+  .t-id{
+    font-size: 10px;
+  }
+
+  .t-reserve{
+    font-size: 8px;
+  }
+  .t-grid{
+      grid-template-columns: repeat(4, 1fr);
+      padding: 15px;
+    }
+}
+                
+@media(max-width: 637px) and (min-width: 320px){
+  .options > div > div:not(.active), .active{
+    justify-content: center;
+  }
+
+  .options > div > div > p{
+    display: none;
+  }
+
+  .options > div > div > i{
+    display: block;
+    margin: unset;
+    font-size: 15px;
+  }
+
+  .opt-buttons .buttons, .tables-buttons{
+    width: 220px;
+    border-radius: 8px;
+  }
+
+  .opt-buttons .food-buttons{
+    width: 330px;
+    border-radius: 8px;
+  }
+
+  :is(.opt-buttons .buttons, .food-buttons, .tables-buttons) > div{
+    width: 110px;
+    padding: 3px 0;
+    font-size: 11px;
+  }
+
+  .desserts-buttons{
+    width: 350px;
+  }
+
+  .opt-buttons .desserts-buttons > div{
+    font-size: 10px;
+    padding: 3px 2px;
+  }
+
+  .price-seat{
+    margin: 1.2rem;
+  }
+
+  .t-grid{
+    padding: 10px 15px;
+    gap: 1.3rem;
+  }
+
+  .f-container{
+    width: 300px;
+    height: 45px;
+    padding: 0 10px;
+  }
+
+  .input{
+    padding: unset;
+  }
+  .input input{
+    padding: 3px;
+    width: 230px;
+    font-size: 9px;
+  }
+
+  .input input::placeholder{
+    font-size: 9px;
+  }
+
+  .input button{
+    padding: 3px 10px;
+    font-size: 8px;
+  }
+}
+                
+@media(max-width: 575px) and (min-width: 320px){
+.container{
+padding: 11px;
+}
+
+.opt-buttons .buttons, .tables-buttons{
+width: 200px;
+border-radius: 8px;
+}
+
+.opt-buttons .food-buttons{
+width: 310px;
+border-radius: 8px;
+}
+
+:is(.opt-buttons .buttons, .food-buttons, .tables-buttons) > div{
+padding: 3px 0;
+font-size: 10px;
+}
+.desserts-buttons{
+width: 300px;
+}
+
+.opt-buttons .desserts-buttons > div{
+font-size: 9px;
+padding: 2px;
+}
+
+.price-seat{
+margin: -.7rem 1.7rem 1.5rem 1.7rem;   
+}
+
+.t-grid{
+padding: 2px 15px;
+grid-template-columns: repeat(3, 1fr);
+row-gap: 1.3rem;
+}
+}
+
+@media(max-width: 571px) and (min-width: 320px){
+.products-grid{
+max-width: 280px;
+}
+
+.products-grid img{
+width: 280px;
+height: 200px;
+}
+}
+
+@media(max-width: 484px) and (min-width: 320px){
+.products-grid{
+  max-width: 250px;
+}
+
+.products-grid img{
+  width: 250px;
+  height: 150px;
+}
+
+.desserts-buttons{
+  width: 280px;
+}
+
+.opt-buttons .desserts-buttons > div{
+  font-size: 10px;
+}
+}
+
+@media(max-width: 425px) and (min-width: 320px){
+  .food-drink, .desserts{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .opt-buttons .buttons, .tables-buttons{
+    margin-bottom: 3rem;
+  }
+
+  .products-grid{
+    max-width: 220px;
+  }
+
+  .products-grid img{
+      width: 220px;
+      height: 120px;
+    }
+
+  .price-seat{
+    margin: -.7rem 1.3rem 1.5rem 1.3rem;   
+  }
+
+  .price-seat > div{
+    padding: 5px;
+  }
+
+  .t-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .table{
+    padding: 5px 10px;
+  }
+}
+
+@media(max-width: 424px) and (min-width: 320px){
+  .container{
+    padding: 9px;
+  }
+
+  .options > div > div:not(.active), .active{
+    padding: 5px 7px;
+    border-radius: 5px;
+  }
+
+  .opt-buttons .buttons, .tables-buttons{
+    width: 180px;
+    border-radius: 6px;
+  }
+
+  .opt-buttons .food-buttons{
+    border-radius: 6px;
+  }
+
+  :is(.opt-buttons .buttons, .food-buttons, .tables-buttons) > div{
+    width: 90px;
+    padding: 3px 0;
+    font-size: 9px;
+  }
+
+  .price-seat{
+    margin: -.7rem 1.3rem 1.5rem 1.3rem;   
+  }
+
+  .price-seat > div{
+    font-size: 9px;
+  }
+
+  .table{
+    padding: 5px 10px;
+  }
+
+  .t-id{
+    font-size: 10px;
+  }
+  .t-reserve{
+      font-size: 9px;
+    }
+}
+                        
+@media(max-width: 395px) and (min-width: 320px){
+  .opt-buttons .buttons, .tables-buttons{
+    width: 160px;
+    border-radius: 5px;
+  }
+
+  .opt-buttons .food-buttons{
+    width: 280px;
+    border-radius: 5px;
+  }
+
+  :is(.opt-buttons .buttons, .tables-buttons) > div{
+    width: 80px;
+    padding: 2px 0;
+    font-size: 9px;
+  }
+
+  .opt-buttons .food-buttons > div{
+    padding: 3px 4px;
+    font-size: 7.5px;
+  }
+}
+
+@media(max-width: 335px) and (min-width: 320px){
+  .opt-buttons .buttons ,.tables-buttons{
+    width: 140px;
+    border-radius: 4px;
+  }
+
+  :is(.opt-buttons .buttons, .tables-buttons) > div{
+    width: 70px;
+    padding: 2px 0;
+    font-size: 8px;
+  }
+
+  .opt-buttons .food-buttons > div{
+    padding: 2px;
+    font-size: 7px;
+  }
+
+  .price-seat{
+    margin: -1rem .5rem 1.5rem .5rem;   
+  }
+
+  .price-seat > div{
+    font-size: 8px;
+  }
+
+  .table{
+    padding: 3px 10px;
+  }
+
+  .t-id{
+    font-size: 9px;
+  }
+
+  .t-reserve{
+    font-size: 8px;
+  }
+}                                                                                                                                                                                                                                        
