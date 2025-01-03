@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  
+  :root{
+    --color1: #4E352E;
+    --color2: #aa866c;
+    --bg: #452212;
+    --add: #e2a218d8;
+    --edit: #294aed;
+    --delete: #da1919;
+    --dim-black: #000000;
+    --dim-white: #f3f3f3;
+    --occupied: #2cbb2c;
+    --text: 2px 4px 6px rgba(0, 0, 0, .3);
+    --button: 0 2px 4px rgba(0, 0, 0, .5);
+    --bar: 0 0 1rem rgb(0 0 0 / .7);
+  }
+  
+  body{
+    font-family: 'Arial', sans-serif;
+    background: var(--color2);
+    user-select: none;
+  }
+  
+  .nav{
+    background: var(--bg);
+    height: 60px;
+    display: grid;
+    place-items: center;
+    box-shadow: var(--bar);
+  }
+  
+  .container{
+    display: grid;
+    place-items: center;
+    min-height: 90vh;
+  }
+  
+  .container h1{
+    color: var(--bg);
+    font-weight: 700;
+    opacity: .6;
+  }
+  
+  .nav h2{
+    color: var(--color2);
+    text-shadow: var(--text);
+  }
+  
+  .cus-details{
+    width: 800px;
+    height: 220px;
+    background: var(--bg);
+    box-shadow: var(--button);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 0;
+    display: grid;
+    place-items: center;
+  }
+  
+  .cus-details > div{
+    width: 550px;
+  }
+  
+  .username{
+    font-size: 19px;
+    color: var(--color2);
+    text-align: center;
+    text-shadow: var(--text);
+    margin-bottom: 3rem;
+  }
+  
+  .contact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .contact > div{
+    background: var(--color2);
+    color: var(--bg);
+    font-size: 15px;
+    padding: 5px 18px;
+    border-radius: 8px;
+    box-shadow: var(--text);
+  }
+  
+  .contact > div > i{
+    font-size: 14px;
+    margin-right: 8px;
+  }

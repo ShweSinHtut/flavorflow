@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root{
+    --color1: #4E352E;
+    --color2: #b38771;
+    --bg: #452212;
+    --delete: #da1919;
+  }
+  
+  body{
+    font-family: 'Arial', sans-serif;
+    user-select: none;
+    background-image: url('./form.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+  
+  .container{
+    width: 1000px;
+    height: 600px;
+    background: transparent;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 1rem rgb(0 0 0 / .5);
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+  }
+  
+  h1{
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--bg);
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, .2);
+    margin: 25px 0 50px 0;
+  }
+  
+  .lists{
+    width: 900px;
+    height: 500px;
+    padding: 0 0 0 10px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .lists::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .f-name-q{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--bg);
+    color: var(--color2);
+    margin-right: 50px;
+    padding: 8px 5px;
+    border-radius: 7px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, .2);
+  }
+  
+  .f-name{
+    font-size: 14px;
+  }
+  
+  .f-q{
+    font-size: 12px;
+    background: var(--color2);
+    color: var(--bg);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+  
+  .user-details{
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+  
+  .user-details > div{
+    width: 200px;
+    text-align: center;
+    color: var(--bg);
+    font-size: 17px;
+    font-weight: 600;
+  }
+  
+  .user-details i{
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  
+  .order-container{
+    display: flex;
+    align-items: baseline;
+    scroll-snap-align: center;
+  }

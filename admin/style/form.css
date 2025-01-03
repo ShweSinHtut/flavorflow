@@ -1,0 +1,175 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --color1: #4E352E;
+  --color2: #b38771;
+  --bg: #452212;
+  --delete: #da1919;
+}
+
+body{
+  font-family: 'Arial', sans-serif;
+  background-image: url('./form.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 460px;
+  height: 360px;
+  background: transparent;
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 1rem rgb(0 0 0 / .5);
+  border-radius: 15px;
+}
+
+form h1{
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--color1);
+  user-select: none;
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+form input[type='text'], [type='password'], select{
+  width: 350px;
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid var(--color1);
+  border-radius: 10px;
+  outline: none;
+}
+
+:is(form input[type='text'], 
+[type='password'])::placeholder{
+  color: var(--color1);
+  user-select: none;
+}
+
+.img{
+  width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.img input{
+  display: none;
+}
+
+:is(.img) label, button:not(.login){
+  background: var(--bg);
+  color: var(--color2);
+  text-align: center;
+  border: none;
+  user-select: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: .9rem;
+  cursor: pointer;
+  transition: all 250ms ease-in;
+}
+
+.login-form{
+  margin-bottom: .3rem;
+}
+
+.img button, .t-add-btn{
+  padding: 6px 40px;
+}
+
+.t-add-btn{
+  margin-bottom: 10px;
+}
+
+.img label{
+  padding: 6px 65px;
+}
+
+.img-upload{
+  transition: all 250ms ease-in;
+}
+
+:is(.img-upload, button):hover{
+  transform: scale(.95);
+  opacity: .9;
+}
+
+select{
+  margin-bottom: 1.35rem;
+  color: var(--color1);
+}
+
+.category-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -2rem;
+}
+
+.category-btn button{
+  border-radius: 15px;
+  padding: 8px 45px;
+}
+
+.p-form{
+  justify-content: space-evenly;
+  padding: 3.5rem 0;
+}
+
+.t-price{
+  margin-bottom: 2rem;
+}
+
+.login-container{
+  height: 300px;
+  width: 450px;
+}
+
+.login{
+  padding: 5px 18px;
+  border: none;
+  background: var(--bg);
+  color: var(--color2);
+  font-size: .9rem;
+  margin-top: 2rem;
+  border-radius: 7px;
+  user-select: none;
+  cursor: pointer;
+  transition: all 250ms ease-in;
+}
+
+.added, .fail{
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  user-select: none;
+  border-top: .5px solid var(--bg);
+  border-bottom: .5px solid var(--bg);
+  padding: 7px 40px;
+}
+
+.added{
+  color: var(--bg);
+}
+
+.fail{
+  color: var(--delete);
+  border-top: none;
+  border-bottom: none;
+  margin-top: 1rem;
+}
